@@ -12,12 +12,8 @@ class Snake {
       y: this.head.y + this.velocity.y,
     }
 
-    console.log("before")
-    console.log(this)
     this.body.unshift(new_head)
     this.head = new_head
-    console.log("after")
-    console.log(this)
 
     if (this.len < this.body.length) {
       this.body.pop()
@@ -39,7 +35,6 @@ class Snake {
   }
 
   grow() {
-    console.log("grow")
     this.len++
   }
 
