@@ -82,6 +82,7 @@ function keyPressed() {
 }
 
 function makeFood(level, max_x, max_y) {
+  food = []
   for (let i = 0; i < level; i++) {
     food.push(new Food(max_x, max_y))
   }
@@ -90,6 +91,7 @@ function makeFood(level, max_x, max_y) {
 function gameOver() {
   noLoop()
   fill(255)
+  stroke(0)
   textSize(60)
   textAlign(CENTER);
   text("Game over", width / 2, height / 2)

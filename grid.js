@@ -21,7 +21,7 @@ class Grid {
   }
 
   show() {
-    stroke(150)
+    stroke(100)
     // draw vert bars
     for (let i = 1; i < this.width_in_squares; i++) {
       let x = i * this.square_size
