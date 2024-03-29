@@ -11,6 +11,7 @@ let count = 0
 function setup() {
   createCanvas(width, height);
 
+  level = 1
   grid = new Grid(20, width, height);
   snake = new Snake(10, 10)
 
@@ -22,27 +23,32 @@ function draw() {
   background(0);
   stroke(255);
 
+  // update where the snakes body is
   snake.update()
-  console.log(snake)
 
+  // oob check
   if (grid.is_out_of_bounds(snake.head.x, snake.head.y)) {
     gameOver()
     return;
   }
 
+  // insert game elements into the grid
   grid.clear_snake_from_grid()
   for (let f of food) {
     f.add_to_grid(grid)
   }
   snake.add_to_grid(grid)
 
+  // draw the frame
   grid.show()
 
+  // fail on butt eating
   if (snake.check_for_self_collision()) {
     gameOver()
     return;
   }
 
+  // check for food being eaten
   let new_food = food
   for (let f of food) {
     if (!snake.check_for_eats_food(f)) {
@@ -52,6 +58,8 @@ function draw() {
     new_food = new_food.filter(fobj => fobj !== f)
   }
   food = new_food
+
+  // level up!
   if (food.length == 0) {
     level++
     makeFood(level, grid.width_in_squares, grid.height_in_squares)
@@ -87,5 +95,4 @@ function gameOver() {
   text("Game over", width / 2, height / 2)
   textSize(20)
   text("Space to restart", width / 2, 3 * height / 4)
-  level = 1;
 }
