@@ -87,4 +87,5 @@ function gameOver() {
   text("Game over", width / 2, height / 2)
   textSize(20)
   text("Space to restart", width / 2, 3 * height / 4)
+  level = 1;
 }
