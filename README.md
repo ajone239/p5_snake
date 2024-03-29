@@ -11,5 +11,5 @@ Have fun!
 
 Game Play
 --------------------
-[whoops?!](/gameplay.png)
+![whoops?!](/gameplay.png)
 
