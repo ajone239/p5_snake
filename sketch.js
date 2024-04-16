@@ -67,13 +67,13 @@ function draw() {
 }
 
 function keyPressed() {
-  if (key == 'a' || key == 'h') {
+  if (key == 'a' || key == 'h' || keyCode == LEFT_ARROW) {
     snake.velocity = { x: -1, y: 0 }
-  } else if (key == 'w' || key == 'k') {
+  } else if (key == 'w' || key == 'k' || keyCode == UP_ARROW) {
     snake.velocity = { x: 0, y: -1 }
-  } else if (key == 's' || key == 'j') {
+  } else if (key == 's' || key == 'j' || keyCode == DOWN_ARROW) {
     snake.velocity = { x: 0, y: 1 }
-  } else if (key == 'd' || key == 'l') {
+  } else if (key == 'd' || key == 'l' || keyCode == RIGHT_ARROW) {
     snake.velocity = { x: 1, y: 0 }
   } else if (key == ' ') {
     setup()
