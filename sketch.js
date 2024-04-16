@@ -59,12 +59,16 @@ function draw() {
     snake.grow()
     new_food = new_food.filter(fobj => fobj !== f)
     score += 10
+    let scoreString = `Score: ${score}`
+    document.getElementById('score').innerHTML = scoreString;
   }
   food = new_food
 
   // level up!
   if (food.length == 0) {
     level++
+    let levelString = `Level: ${level}`
+    document.getElementById('level').innerHTML = levelString;
     makeFood(level, grid.width_in_squares, grid.height_in_squares)
   }
 }
