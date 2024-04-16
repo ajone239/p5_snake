@@ -4,6 +4,7 @@ const height = 600
 let grid
 let snake
 let level = 1
+let score = 0
 let food = []
 
 let count = 0
@@ -12,6 +13,7 @@ function setup() {
   createCanvas(width, height);
 
   level = 1
+  score = 0
   grid = new Grid(20, width, height);
   snake = new Snake(10, 10)
 
@@ -56,6 +58,7 @@ function draw() {
     }
     snake.grow()
     new_food = new_food.filter(fobj => fobj !== f)
+    score += 10
   }
   food = new_food
 
@@ -90,11 +93,12 @@ function makeFood(level, max_x, max_y) {
 
 function gameOver() {
   noLoop()
+  background(0);
   fill(255)
   stroke(0)
-  textSize(60)
+  textSize(40)
   textAlign(CENTER);
-  text("Game over", width / 2, height / 2)
+  text(`Game over: Reached Level ${level}`, width / 2, height / 2)
   textSize(20)
   text("Space to restart", width / 2, 3 * height / 4)
 }
