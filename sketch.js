@@ -1,10 +1,12 @@
 const width = 600
 const height = 600
 
-let grid
-let snake
 let level = 1
 let score = 0
+let gaming = false
+
+let grid
+let snake
 let food = []
 
 let count = 0
@@ -19,6 +21,9 @@ function setup() {
 
   makeFood(level, grid.width_in_squares, grid.height_in_squares)
   frameRate(10)
+
+  grid.show()
+  noLoop()
 }
 
 function draw() {
@@ -61,6 +66,7 @@ function draw() {
     score += 10
     let scoreString = `Score: ${score}`
     document.getElementById('score').innerHTML = scoreString;
+    break;
   }
   food = new_food
 
@@ -74,6 +80,10 @@ function draw() {
 }
 
 function keyPressed() {
+  if (!gaming) {
+    loop()
+    gaming = true
+  }
   if (key == 'a' || key == 'h' || keyCode == LEFT_ARROW) {
     snake.velocity = { x: -1, y: 0 }
   } else if (key == 'w' || key == 'k' || keyCode == UP_ARROW) {
@@ -83,8 +93,10 @@ function keyPressed() {
   } else if (key == 'd' || key == 'l' || keyCode == RIGHT_ARROW) {
     snake.velocity = { x: 1, y: 0 }
   } else if (key == ' ') {
+    gaming = false
     setup()
-    loop()
+    noLoop()
+    return
   }
 }
 
@@ -96,6 +108,7 @@ function makeFood(level, max_x, max_y) {
 }
 
 function gameOver() {
+  gaming = false
   noLoop()
   background(0);
   fill(255)
